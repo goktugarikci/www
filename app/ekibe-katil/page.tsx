@@ -1,153 +1,182 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
-import { Send, User, Mail, ArrowLeft, Terminal, Briefcase, Code2, Link as LinkIcon, Cpu } from "lucide-react";
+import { Send, User, Mail, Cpu, ArrowLeft, Terminal, Briefcase, ChevronDown } from "lucide-react";
 import Link from "next/link";
 import Navbar from "../components/Navbar";
 
 export default function JoinTheTeam() {
+  const expertises = [
+    "C++ System Developer",
+    "Rust & Tauri Specialist",
+    "Next.js Architecture",
+    "DevOps & Infrastructure"
+  ];
+
   return (
-    <main className="min-h-screen bg-neutral-950 text-neutral-50 font-sans selection:bg-blue-500/30 relative">
+    <main className="min-h-screen bg-neutral-950 text-neutral-50 font-sans selection:bg-blue-500/30 relative overflow-x-hidden">
       
-      {/* 1. NAVBAR (En Üst Katman) */}
+      {/* 1. NAVIGASYON */}
       <Navbar />
 
-      {/* 2. ARKA PLAN DEKORASYONU (Z-Index 0) */}
+      {/* Arka Plan Dekoratif Işıklar */}
       <div className="fixed inset-0 pointer-events-none z-0">
-        <div className="absolute top-[-5%] left-[-5%] w-[35%] h-[35%] bg-blue-600/10 blur-[120px] rounded-full mix-blend-screen" />
-        <div className="absolute bottom-[-5%] right-[-5%] w-[35%] h-[35%] bg-purple-600/10 blur-[120px] rounded-full mix-blend-screen" />
+        <div className="absolute top-[-20%] left-[-20%] w-[60%] h-[60%] bg-blue-600/5 blur-[160px] rounded-full mix-blend-screen" />
+        <div className="absolute bottom-[-20%] right-[-20%] w-[60%] h-[60%] bg-purple-600/5 blur-[160px] rounded-full mix-blend-screen" />
       </div>
 
-      {/* 3. İÇERİK KATMANI (Z-Index 10) */}
-      <div className="relative z-10 pt-40 pb-24 px-6 sm:px-12 md:px-24 lg:px-48 xl:px-80">
+      {/* 2. ANA İÇERİK - Geniş Padding */}
+      <div className="relative z-10 pt-52 pb-40 px-6 sm:px-24 md:px-40 lg:px-64 xl:px-[25%]">
         
-        {/* Navigasyon & Geri Dön */}
-        <motion.div initial={{ opacity: 0, x: -10 }} animate={{ opacity: 1, x: 0 }} className="mb-16 max-w-3xl mx-auto">
-          <Link href="/" className="inline-flex items-center gap-3 text-neutral-500 hover:text-white transition-all group">
-            <div className="p-2.5 bg-white/5 rounded-full border border-white/10 group-hover:bg-white/10 transition-all shadow-inner">
-              <ArrowLeft size={18} />
-            </div>
-            <span className="text-[10px] font-black uppercase tracking-[0.3em]">Ana Sayfaya Dön</span>
-          </Link>
-        </motion.div>
-
-        {/* Başlık ve Tanıtım */}
-        <div className="text-center mb-24 max-w-4xl mx-auto">
+        <div className="text-center mb-32 max-w-4xl mx-auto">
           <motion.h1 
             initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}
-            className="text-5xl md:text-8xl font-black tracking-tighter mb-8 leading-[0.9]"
+            className="text-7xl md:text-9xl font-black tracking-tighter mb-10 leading-[0.8]"
           >
             QODLIX <br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-500">
-              KADROSUNA
-            </span> KATIL
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-indigo-600">EKİBİ</span>
           </motion.h1>
-          <p className="text-neutral-400 text-lg md:text-xl leading-relaxed max-w-2xl mx-auto">
-            Sistem mimarisi, yüksek performanslı backend ve modern arayüzler üzerine odaklanan vizyonumuza ortak olun.
-          </p>
+          <div className="inline-flex items-center gap-3 text-neutral-500 uppercase tracking-[0.5em] text-xs font-bold">
+            <span className="w-12 h-px bg-neutral-800" />
+            Başvuru Formu
+            <span className="w-12 h-px bg-neutral-800" />
+          </div>
         </div>
 
-        {/* BAŞVURU FORMU KARTI */}
-        <div className="max-w-2xl mx-auto">
+        {/* 3. MERKEZİ FORM KARTI */}
+        <div className="max-w-4xl mx-auto">
           <motion.div 
-            initial={{ opacity: 0, scale: 1 }}
-            animate={{ opacity: 1, scale: 1 }}
-            className="bg-neutral-900/40 backdrop-blur-3xl border border-white/5 rounded-[3rem] p-8 md:p-16 shadow-2xl relative overflow-hidden"
+            initial={{ opacity: 0, scale: 0.98 }} animate={{ opacity: 1, scale: 1 }}
+            className="bg-neutral-900/40 backdrop-blur-3xl border border-white/5 rounded-[4.5rem] p-12 md:p-28 shadow-[0_50px_100px_-20px_rgba(0,0,0,0.5)] relative"
           >
-            {/* Dekoratif Cpu İkonu (Arka Planda, Metne Engel Olmaz) */}
-            
-            <div className="relative -top-12 -right-12 text-white/5 rotate-12 pointer-events-none">
-              <Cpu size={200} />
-            <br />
-            </div>
-            
-            <div className="flex items-center gap-4 mb-14 relative z-10">
-              <div className="w-12 h-1 bg-blue-500 rounded-full shadow-[0_0_10px_rgba(59,130,246,0.5)]" />
-              <h2 className="text-xs font-black tracking-[0.4em] text-white uppercase">Sisteme Giriş Yapılıyor</h2>
+            {/* H2 BAŞLIK */}
+            <div className="flex items-center gap-8 mb-24 relative z-10">
+              <div className="w-24 h-2 bg-blue-600 rounded-full shadow-[0_0_25px_rgba(37,99,235,0.6)]" />
+              <h2 className="text-3xl md:text-5xl font-black tracking-tight text-white uppercase italic">
+                Terminal Girişi
+              </h2>
             </div>
 
-            <form className="space-y-12 relative z-10">
-              {/* İsim & Email */}
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-10 mb-8">
-                <StyledInput clasName="p-4" label="Ad Soyad" placeholder="Adınız" icon={<User size={16} />} />
-                <StyledInput clasName="p-4" label="E-posta" placeholder="example@qodlix.com" type="email" icon={<Mail size={16} />} />
-              </div>
-
-              {/* Pozisyon Seçimi */}
-              <div className="space-y-4 group mb-8">
-                <div className="flex items-center gap-3 text-neutral-500 ml-1 group-focus-within:text-blue-400 transition-colors">
-                  <Terminal size={14} />
-                  <label className="text-[10px] font-black uppercase tracking-widest text-white/90">İlgilendiğiniz Uzmanlık</label>
-                </div>
-                <select className="w-full bg-neutral-950/60 border border-neutral-800 rounded-2xl px-6 py-5 text-white focus:outline-none focus:border-blue-500/50 focus:ring-4 focus:ring-blue-500/5 transition-all appearance-none cursor-pointer">
-                  <option>C++ System Developer</option>
-                  <option>Rust & Tauri Specialist</option>
-                  <option>Next.js Fullstack Architect</option>
-                  <option>Backend & SaaS Developer</option>
-                </select>
-              </div>
+            {/* FORM ALANLARI */}
+            <form className="space-y-20 relative z-10">
               
-
-
-              {/* Sosyal Medya Linkleri */}
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-10 mb-8">
-                <StyledInput label="GitHub" placeholder="github.com/username" icon={<FaGithub size={16} />} />
-                
-                <StyledInput label="LinkedIn" placeholder="linkedin.com/in/username" icon={<FaLinkedin size={16} />} />
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-20">
+                <InputGroup label="Tam Adınız" placeholder="Ad Soyad" icon={<User size={28} />} />
+                <InputGroup label="E-posta Adresi" placeholder="email@qodlix.com" type="email" icon={<Mail size={28} />} />
               </div>
 
-              {/* Mesaj Alanı */}
-              <div className="space-y-4 group">
-                <div className="flex items-center gap-3 text-neutral-500 ml-1 group-focus-within:text-purple-400 transition-colors">
-                  <Briefcase size={14} />
-                  <label className="text-[10px] font-black uppercase tracking-widest text-white/90">Kapak Mektubu</label>
+              {/* ÖZEL AÇILIR LİSTE (Custom Select - Tam Siyah Tema) */}
+              <CustomSelectGroup 
+                label="Uzmanlık Alanı" 
+                options={expertises} 
+                icon={<Terminal size={28} />} 
+                placeholder="Bir alan seçin..." 
+              />
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-20">
+                <InputGroup label="GitHub Profil" placeholder="github.com/..." icon={<FaGithub size={28} />} />
+                <InputGroup label="LinkedIn Profil" placeholder="linkedin.com/..." icon={<FaLinkedin size={28} />} />
+              </div>
+
+              <div className="space-y-8 group">
+                <div className="flex items-center gap-5 text-neutral-400 ml-1 group-focus-within:text-indigo-500 transition-colors">
+                  <Briefcase size={28} />
+                  <label className="text-lg font-black uppercase tracking-[0.3em]">Kapak Mektubu</label>
                 </div>
                 <textarea 
-                  rows={6} 
-                  placeholder="Teknik deneyimlerinizden ve Qodlix vizyonunuzdan bahsedin..." 
-                  className="w-full bg-neutral-950/60 border border-neutral-800 rounded-[2rem] px-6 py-5 text-white placeholder:text-neutral-700 focus:outline-none focus:border-blue-500/50 focus:ring-4 focus:ring-blue-500/5 transition-all resize-none shadow-inner"
+                  rows={10} 
+                  placeholder="Vizyonunuzdan ve projelerinizden bahsedin..." 
+                  className="w-full bg-neutral-950 border border-neutral-800 rounded-[3.5rem] px-12 py-12 text-white text-2xl placeholder:text-neutral-900 focus:outline-none focus:border-blue-600/50 transition-all resize-none shadow-inner leading-relaxed"
                 />
               </div>
 
-              {/* Buton */}
               <motion.button 
-                whileHover={{ scale: 1.01 }}
-                whileTap={{ scale: 0.99 }}
-                className="w-full py-6 bg-white hover:bg-blue-600 text-black hover:text-white font-black uppercase tracking-[0.3em] rounded-2xl flex items-center justify-center gap-3 transition-all shadow-2xl active:shadow-inner group"
+                whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}
+                type="button"
+                className="w-full py-12 bg-white hover:bg-blue-600 text-black hover:text-white font-black uppercase tracking-[0.6em] rounded-[2.5rem] flex items-center justify-center gap-6 transition-all shadow-[0_30px_60px_-15px_rgba(255,255,255,0.1)] group text-2xl"
               >
-                BAŞVURUYU TAMAMLA 
-                <Send size={20} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+                BAŞVURU YAP <Send size={32} className="group-hover:translate-x-2 group-hover:-translate-y-2 transition-transform" />
               </motion.button>
             </form>
           </motion.div>
         </div>
       </div>
-
-      {/* 4. FOOTER */}
-      <footer className="py-20 text-center border-t border-white/5 relative z-10 bg-black/20">
-        <div className="text-3xl font-black tracking-tighter mb-4 text-white/10 select-none">QODLIX</div>
-        <p className="text-neutral-600 text-[10px] font-bold tracking-[0.4em] uppercase">
-          © {new Date().getFullYear()} Qodlix Systems — Gelecek Burada Kodlanıyor
-        </p>
-      </footer>
     </main>
   );
 }
 
-// Yardımcı Input Bileşeni (Hizalama Sorunlarını Giderir)
-function StyledInput({ label, placeholder, type = "text", icon }: any) {
+// YARDIMCI BİLEŞEN 1: Standart Text Inputlar
+function InputGroup({ label, placeholder, type = "text", icon }: any) {
   return (
-    <div className="space-y-4 group">
-      <div className="flex items-center gap-3 text-neutral-500 ml-1 group-focus-within:text-blue-400 transition-colors">
+    <div className="space-y-8 group">
+      <div className="flex items-center gap-5 text-neutral-400 ml-1 group-focus-within:text-blue-500 transition-colors">
         {icon}
-        <label className="text-[10px] font-black uppercase tracking-widest text-white/90">{label}</label>
+        <label className="text-lg font-black uppercase tracking-[0.3em]">{label}</label>
       </div>
       <input 
         type={type} 
         placeholder={placeholder} 
-        className="w-full bg-neutral-950/60 border border-neutral-800 rounded-2xl px-6 py-5 text-white placeholder:text-neutral-700 focus:outline-none focus:border-blue-500/50 focus:ring-4 focus:ring-blue-500/5 transition-all shadow-inner" 
+        className="w-full bg-neutral-950 border border-neutral-800 rounded-[2rem] px-10 py-8 text-white text-2xl placeholder:text-neutral-900 focus:outline-none focus:border-blue-600/50 focus:ring-8 focus:ring-blue-600/5 transition-all shadow-inner font-medium" 
       />
+    </div>
+  );
+}
+
+// YARDIMCI BİLEŞEN 2: Tamamen Siyah Özelleştirilmiş Açılır Liste (Custom Dropdown)
+function CustomSelectGroup({ label, options, icon, placeholder }: any) {
+  const [isOpen, setIsOpen] = useState(false);
+  const [selected, setSelected] = useState("");
+
+  return (
+    <div className="space-y-8 group relative z-50">
+      <div className="flex items-center gap-5 text-neutral-400 ml-1 group-focus-within:text-blue-500 transition-colors">
+        {icon}
+        <label className="text-lg font-black uppercase tracking-[0.3em]">{label}</label>
+      </div>
+      <div className="relative">
+        {/* Seçici Kutu */}
+        <div 
+          onClick={() => setIsOpen(!isOpen)}
+          className={`w-full bg-black border ${isOpen ? 'border-blue-600/50 ring-8 ring-blue-600/5' : 'border-neutral-800'} rounded-[2rem] px-10 py-8 flex items-center justify-between cursor-pointer shadow-inner transition-all hover:border-neutral-700`}
+        >
+          <span className={`text-2xl font-medium ${selected ? "text-white" : "text-neutral-900"}`}>
+            {selected || placeholder}
+          </span>
+          <div className="text-neutral-600 pointer-events-none">
+            <motion.animate animate={{ rotate: isOpen ? 180 : 0 }}>
+              <ChevronDown size={32} className={`transition-transform duration-300 ${isOpen ? "rotate-180 text-blue-500" : ""}`} />
+            </motion.animate>
+          </div>
+        </div>
+
+        {/* Açılan Menü (Tam Siyah) */}
+        <AnimatePresence>
+          {isOpen && (
+            <motion.div 
+              initial={{ opacity: 0, y: -10 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -10 }}
+              transition={{ duration: 0.2 }}
+              className="absolute top-full left-0 right-0 mt-4 bg-black border border-neutral-800 rounded-[2rem] overflow-hidden shadow-[0_30px_60px_rgba(0,0,0,0.8)] z-50 py-4"
+            >
+              {options.map((opt: string) => (
+                <div 
+                  key={opt}
+                  onClick={() => {
+                    setSelected(opt);
+                    setIsOpen(false);
+                  }}
+                  className="px-10 py-6 text-white text-2xl font-medium hover:bg-neutral-900 hover:text-blue-400 transition-colors cursor-pointer border-b border-neutral-900/50 last:border-none"
+                >
+                  {opt}
+                </div>
+              ))}
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </div>
     </div>
   );
 }
