@@ -162,34 +162,45 @@ export default function Home() {
           <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">Projeyi Başlatalım</h2>
           <p className="text-neutral-400 mb-12 leading-relaxed">Sistem altyapısı, SaaS modülü geliştirme veya danışmanlık süreçleri için detayları paylaşabilirsiniz.</p>
           
-          <form className="max-w-2xl mx-auto flex flex-col gap-6 text-left">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <div className="space-y-2 group">
-                <label className="text-[10px] font-black text-neutral-500 uppercase tracking-widest ml-1 group-focus-within:text-blue-400 transition-colors">Ad Soyad</label>
-                <div className="relative">
-                  <User size={18} className="absolute left-4 top-1/2 -translate-y-1/2 text-neutral-600 group-focus-within:text-blue-500 transition-colors" />
-                  <input type="text" placeholder="Adınız" className="w-full bg-neutral-950/50 border border-neutral-800 rounded-xl pl-12 pr-4 py-4 text-white focus:outline-none focus:border-blue-500/50 focus:ring-4 focus:ring-blue-500/5 transition-all" />
+          <form className="max-w-2xl mx-auto flex flex-col gap-8 text-left">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              
+              {/* Ad Soyad Input */}
+              <div className="space-y-3 group">
+                <div className="flex items-center gap-2 text-neutral-500 ml-1 group-focus-within:text-blue-400 transition-colors">
+                  <User size={16} />
+                  <label className="text-[11px] font-black uppercase tracking-widest">Ad Soyad</label>
                 </div>
+                <input type="text" placeholder="Adınız" className="w-full bg-neutral-950/50 border border-neutral-800 rounded-2xl px-6 py-4 text-white placeholder:text-neutral-700 focus:outline-none focus:border-blue-500/50 focus:ring-4 focus:ring-blue-500/5 transition-all shadow-inner" />
               </div>
-              <div className="space-y-2 group">
-                <label className="text-[10px] font-black text-neutral-500 uppercase tracking-widest ml-1 group-focus-within:text-blue-400 transition-colors">E-posta</label>
-                <div className="relative">
-                  <Mail size={18} className="absolute left-4 top-1/2 -translate-y-1/2 text-neutral-600 group-focus-within:text-blue-500 transition-colors" />
-                  <input type="email" placeholder="example@qodlix.com" className="w-full bg-neutral-950/50 border border-neutral-800 rounded-xl pl-12 pr-4 py-4 text-white focus:outline-none focus:border-blue-500/50 focus:ring-4 focus:ring-blue-500/5 transition-all" />
+
+              {/* E-posta Input */}
+              <div className="space-y-3 group">
+                <div className="flex items-center gap-2 text-neutral-500 ml-1 group-focus-within:text-blue-400 transition-colors">
+                  <Mail size={16} />
+                  <label className="text-[11px] font-black uppercase tracking-widest">E-posta</label>
                 </div>
+                <input type="email" placeholder="example@qodlix.com" className="w-full bg-neutral-950/50 border border-neutral-800 rounded-2xl px-6 py-4 text-white placeholder:text-neutral-700 focus:outline-none focus:border-blue-500/50 focus:ring-4 focus:ring-blue-500/5 transition-all shadow-inner" />
               </div>
+
             </div>
             
-            <div className="space-y-2">
-              <label className="text-[10px] font-black text-neutral-500 uppercase tracking-widest ml-1">Mesajınız</label>
-              <textarea rows={5} placeholder="Projenizden veya ihtiyacınızdan bahsedin..." className="w-full bg-neutral-950/50 border border-neutral-800 rounded-2xl px-5 py-4 text-white focus:outline-none focus:border-blue-500/50 focus:ring-4 focus:ring-blue-500/5 transition-all resize-none"></textarea>
+            {/* Mesaj Input */}
+            <div className="space-y-3 group">
+              <div className="flex items-center gap-2 text-neutral-500 ml-1 group-focus-within:text-blue-400 transition-colors">
+                <Terminal size={16} />
+                <label className="text-[11px] font-black uppercase tracking-widest">Mesajınız</label>
+              </div>
+              <textarea rows={5} placeholder="Projenizden veya ihtiyacınızdan bahsedin..." className="w-full bg-neutral-950/50 border border-neutral-800 rounded-2xl px-6 py-4 text-white placeholder:text-neutral-700 focus:outline-none focus:border-blue-500/50 focus:ring-4 focus:ring-blue-500/5 transition-all resize-none shadow-inner"></textarea>
             </div>
             
-            <button type="button" className="w-full mt-4 bg-white hover:bg-blue-600 text-black hover:text-white font-black uppercase tracking-[0.2em] py-5 rounded-2xl flex items-center justify-center gap-3 transition-all shadow-xl active:scale-[0.98] group">
+            {/* Gönder Butonu */}
+            <button type="button" className="w-full mt-2 bg-white hover:bg-blue-600 text-black hover:text-white font-black uppercase tracking-[0.2em] py-5 rounded-2xl flex items-center justify-center gap-3 transition-all shadow-xl active:scale-[0.98] group">
               Mesajı Gönder 
               <Send size={18} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
             </button>
           </form>
+
         </div>
       </section>
 
