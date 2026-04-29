@@ -18,7 +18,7 @@ const projects = [
   },
   {
     id: 2,
-    title: "MySaaSApp & Essential",
+    title: "Essential",
     description: "Hafif ve yüksek performanslı masaüstü arayüzüne sahip, WebSocket haberleşmeli modern iletişim ve Kanban yönetim sistemi.",
     techStack: ["Rust", "Tauri", "React", "C++"],
     gradient: "from-purple-500/20 to-pink-900/20",
@@ -26,7 +26,7 @@ const projects = [
   },
   {
     id: 3,
-    title: "ERP Kasa & Kurye Modülü",
+    title: "ERP/CRM SaaS Modülü",
     description: "Kapsamlı ERP sistemleri için geliştirilmiş; anlık kurye takibi, personel ve nakit akışı yönetimi sağlayan dinamik SaaS modülü.",
     techStack: ["Next.js", "API Entegrasyonu", "Veritabanı Mimarisi"],
     gradient: "from-blue-500/20 to-cyan-900/20",
@@ -34,7 +34,7 @@ const projects = [
   },
   {
     id: 4,
-    title: "Genel Kültür Veritabanı API",
+    title: "Genel Kültür Mobil App",
     description: "Bilim, tarih ve felsefe kategorilerinde 2300'den fazla benzersiz soru içeren, JSON formatında yapılandırılmış quiz uygulaması altyapısı.",
     techStack: ["JSON", "Veri Modelleme", "Backend API"],
     gradient: "from-emerald-500/20 to-teal-900/20",
@@ -51,7 +51,7 @@ export default function ProjectsSlider() {
     <section className="py-24 w-full relative z-10">
       <div className="max-w-7xl mx-auto px-6 md:px-12 mb-12">
         <h2 className="text-3xl md:text-5xl font-bold text-white mb-4">
-          Öne Çıkan <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-500">Sistemler</span>
+          Öne Çıkan Sistemler <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-500">Projeler</span>
         </h2>
         <p className="text-neutral-400 text-lg">Geliştirilmiş modüller, altyapılar ve konsept tasarımlar.</p>
       </div>

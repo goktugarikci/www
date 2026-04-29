@@ -17,10 +17,7 @@ import Link from "next/link";
 import Navbar from "./components/Navbar";
 import ProjectsSlider from "./components/ProjectsSlider";
 
-// Teknoloji Listemiz
-const technologies = [
-  "C++", "C#", "Rust", "Python", "MSSQL", "MYSQL", "MongoDB", "SQLite", "Java", "GoLang"
-];
+
 
 export default function Home() {
   return (
@@ -65,12 +62,12 @@ export default function Home() {
           </Link>
         </motion.div>
       </section>
-
+      <br/>
       {/* 3. FİRMALAR & ŞİRKETLER */}
       <section id="firmalar" className="py-16 relative z-10 border-y border-white/5 bg-neutral-900/20">
         <div className="max-w-7xl mx-auto px-6 md:px-12">
           <div className="mb-8 text-center">
-            <p className="text-xs font-semibold text-neutral-500 tracking-widest uppercase">Güvenen Şirketler & Partnerler</p>
+            <p className="text-xs font-semibold text-neutral-500 tracking-widest uppercase">Partnerler</p>
           </div>
           
           {/* Orantılı Padding ve Kenar Radiant Efekti Eklendi */}
@@ -83,10 +80,10 @@ export default function Home() {
               >
                 {[1, 2].map((_, i) => (
                   <div key={i} className="flex items-center gap-16 md:gap-32">
-                    <h3 className="text-2xl font-bold font-serif">TechCorp</h3>
-                    <h3 className="text-2xl font-black tracking-tighter">GLOBAL<span className="text-blue-500">NET</span></h3>
-                    <h3 className="text-2xl font-light tracking-widest">NEXUS</h3>
-                    <h3 className="text-xl font-bold">DataSys ERP</h3>
+                    <h3 className="text-2xl font-bold font-serif">Hostinger</h3>
+                    <h3 className="text-2xl font-black tracking-tighter">Oracle</h3>
+                    <h3 className="text-2xl font-light tracking-widest">Google</h3>
+                    <h3 className="text-xl font-bold">Steam</h3>
                   </div>
                 ))}
               </motion.div>
@@ -127,26 +124,42 @@ export default function Home() {
       </section>
       <br />
 
-      {/* 6. KULLANILAN TEKNOLOJİLER (PADDİNG VE RADİANT EKLENDİ) */}
-      <section className="py-21 relative z-20 border-y border-white/5 bg-neutral-900/30 shadow-3xl">
-        {/* Ortaya hizalama ve sağ/sol boşluk (Orantı) */}
+      {/* 6. GELİŞTİRME ALTYAPISI & TEKNOLOJİ YIĞINI */}
+      <section id="techs" className="py-16 relative z-10 border-y border-white/5 bg-neutral-900/20">
         <div className="max-w-7xl mx-auto px-6 md:px-12">
-        <h4 className="text-2xl md:text-2xl font-bold text-white mb-4 text-center">Kullanılan  <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-300 to-pink-500">Teknolojiler</span></h4>
-      
-          {/* Sağ ve soldan yumuşakça kaybolma (Mask Image Radiant Efekti) */}
+          
+          <div className="mb-14 text-center">
+            <p className="text-xs font-black text-neutral-500 tracking-[0.4em] uppercase">
+              Geliştirme Altyapısı & Teknoloji Yığını
+            </p>
+          </div>
+          <br/>
+          {/* Orantılı Padding ve Kenar Radiant Efekti */}
           <div className="overflow-hidden flex items-center [mask-image:linear-gradient(to_right,transparent,black_10%,black_90%,transparent)]">
             <div className="flex w-max">
               <motion.div 
                 animate={{ x: ["0%", "-50%"] }} 
-                transition={{ repeat: Infinity, ease: "linear", duration: 60 }}
-                className="flex items-center"
+                transition={{ repeat: Infinity, ease: "linear", duration: 35 }} 
+                className="flex items-center gap-16 md:gap-32 px-8 cursor-default"
               >
-                {[...technologies, ...technologies].map((tech, idx) => (
-                  <div key={idx} className="flex items-center">
-                    <span className="text-2xl md:text-4xl font-black text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-500 uppercase tracking-[0.2em] px-8 md:px-12 cursor-default drop-shadow-sm">
-                      {tech}
-                    </span>
-                    <span className="w-2 h-2 rounded-full bg-white/20" />
+                {/* Kesintisiz döngü için 2 kez tekrarlıyoruz */}
+                {[1, 2].map((_, x) => (
+                  <div key={x} className="flex items-center gap-16 md:gap-32">
+                    
+                    {/* Programlama Dilleri */}
+                    <h3 className="text-2xl md:text-3xl font-black tracking-widest" style={{ color: "#3b82f6", textShadow: "0 0 15px rgba(59, 130, 246, 0.6)" }}>C++</h3>
+                    <h3 className="text-2xl md:text-3xl font-black tracking-widest" style={{ color: "#f97316", textShadow: "0 0 15px rgba(249, 115, 22, 0.6)" }}>Rust</h3>
+                    <h3 className="text-2xl md:text-3xl font-black tracking-widest" style={{ color: "#06b6d4", textShadow: "0 0 15px rgba(6, 182, 212, 0.6)" }}>GoLang</h3>
+                    <h3 className="text-2xl md:text-3xl font-black tracking-widest" style={{ color: "#eab308", textShadow: "0 0 15px rgba(234, 179, 8, 0.6)" }}>Python</h3>
+                    <h3 className="text-2xl md:text-3xl font-black tracking-widest" style={{ color: "#ef4444", textShadow: "0 0 15px rgba(239, 68, 68, 0.6)" }}>Java</h3>
+                    <h3 className="text-2xl md:text-3xl font-black tracking-widest" style={{ color: "#a855f7", textShadow: "0 0 15px rgba(168, 85, 247, 0.6)" }}>C#</h3>
+                    
+                    {/* Veritabanları */}
+                    <h3 className="text-2xl md:text-3xl font-black tracking-widest" style={{ color: "#10b981", textShadow: "0 0 15px rgba(16, 185, 129, 0.6)" }}>MongoDB</h3>
+                    <h3 className="text-2xl md:text-3xl font-black tracking-widest" style={{ color: "#0ea5e9", textShadow: "0 0 15px rgba(49, 231, 255, 0.6)" }}>MSSQL</h3>
+                    <h3 className="text-2xl md:text-3xl font-black tracking-widest" style={{ color: "#ef4444", textShadow: "0 0 15px rgba(233, 14, 14, 0.6)" }}>MYSQL</h3>
+                    <h3 className="text-2xl md:text-3xl font-black tracking-widest" style={{ color: "#d9f3ff", textShadow: "0 0 15px rgba(255, 255, 255, 0.69)" }}>SQLite</h3>
+                    
                   </div>
                 ))}
               </motion.div>
@@ -208,10 +221,13 @@ export default function Home() {
       <footer className="py-12 text-center border-t border-white/5 relative z-10">
         <div className="text-xl font-black tracking-tighter mb-4 opacity-30">QODLIX</div>
         <p className="text-neutral-600 text-xs tracking-widest uppercase">
-          © {new Date().getFullYear()} Qodlix. Tüm hakları saklıdır.
+          © {new Date().getFullYear()} Qodlix. Tüm hakları saklıdır.  
+        </p>
+        <p className="text-neutral-600 text-xs tracking-widest ">
+          Designed and built with ❤️ by goktugarikci@gmail.com
         </p>
       </footer>
-
+      <br />
     </main>
   );
 }
